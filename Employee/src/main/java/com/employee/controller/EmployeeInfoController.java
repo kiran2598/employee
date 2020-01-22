@@ -33,21 +33,7 @@ public class EmployeeInfoController {
 		employeeinfoservice.addemployeeinfo(employeeinfo);
 	}
 
-	@RequestMapping(value="/get/{id}",method=RequestMethod.GET,produces = "application/json")
-	public @ResponseBody String getemployeeinfo(@PathVariable ("id") int id) throws Exception{
-		
-		EmployeeInfoModel model = employeeinfoservice.getemployeeinfo(id);
-		
-		Response res = CommonUtils.getResponseObject(" employee info found");
-		if (model==null) {
-			ErrorObject err = CommonUtils.getErrorResponse("employee info Not Found", "employee info Not Found");
-			res.setErrors(err);
-			res.setStatus(StatusCode.ERROR.name());
-		} else {
-			res.setData(model);
-		}
-		return CommonUtils.getJson(res);
-	}
+	
 	@RequestMapping(value = "/getAll", method = RequestMethod.GET, produces = "application/json")
 	public String getallemployeeinfo() throws Exception{
 		
